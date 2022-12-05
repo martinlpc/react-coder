@@ -1,22 +1,27 @@
+// Libraries and resources
 import React from "react";
+import { Routes, Route } from "react-router-dom";
+
+// Components
 import NavBar from "./components/NavBar";
-import ItemListContainer from "./components/ItemListContainer";
+import ItemListContainer from "./pages/ItemListContainer";
+import ItemDetailContainer from "./pages/ItemDetailContainer";
 
 // Classes
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/App.css";
 
 function App() {
-    let userName = "invitado/a";
-    let greetingTxt = "!Bienvenidx " + userName + "!";
+    // La peticion a la DB/API/JSON se hace dentro de useEffect en el respectivo componente
+
     return (
         <div className="App">
-            <header className="App-header">
-                <NavBar />
-            </header>
-            <main>
-                <ItemListContainer greeting={greetingTxt} />
-            </main>
+            <NavBar />
+            <Routes>
+                <Route exact path="/" element={<ItemListContainer />} />
+                <Route path="category/:id" element={<ItemListContainer />} />
+                <Route path="item/:id" element={<ItemDetailContainer />} />
+            </Routes>
         </div>
     );
 }

@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "title": "Bolsitas biodegradables",
+        "description": "Bolsas biodegradables para levantar los desechos",
+        "category": "accesorios",
+        "price": 315.0,
+        "hasPromo": false,
+        "img_src": "https://lineaeco.com.co/wp-content/uploads/2021/03/bolsas-para-perros-biodegradables.jpg",
+        "species": ["perro", "gato"]
+    },
+    {
+        "id": 2,
+        "title": "Collar perruno con ID",
+        "description": "Para identificar a tu perro en caso de que se extravíe",
+        "category": "accesorios",
+        "price": 600.0,
+        "hasPromo": false,
+        "img_src": "https://http2.mlstatic.com/D_NQ_NP_891168-MLM51721564007_092022-O.webp",
+        "species": ["perro"]
+    },
+    {
+        "id": 3,
+        "title": "Rascador premium",
+        "description": "Rascador con varios niveles para gato",
+        "category": "juguetes",
+        "price": 2300.0,
+        "hasPromo": true,
+        "img_src": "https://www.mundodeportivo.com/files/content_image_mobile_filter/uploads/2018/03/22/60e784f009b06.jpeg",
+        "species": ["gato"]
+    },
+    {
+        "id": 4,
+        "title": "Batea 100x40x30",
+        "description": "Batea sanitaria para gatos o conejos",
+        "category": "accesorios",
+        "price": 1200.0,
+        "hasPromo": true,
+        "img_src": "https://http2.mlstatic.com/D_NQ_NP_678209-MLA43348511821_092020-V.jpg",
+        "species": ["gato", "conejo"]
+    }
+]
