@@ -3,12 +3,17 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .App-logo {
   height: 40px;
 }
 
 .Brand-name {
   text-decoration: none;
+
 }
 
 .App-header {
@@ -20,9 +25,9 @@
   color: white;
 }
 
-.Navbar-dropdown>* {
+/* .Navbar-dropdown>* {
   text-decoration: none;
-}
+} */
 
 /* .Logo a {
   text-decoration: none;
@@ -49,6 +54,11 @@
   justify-items: center;
 }
 
+
 .Cart-widget {
   margin: 10px 10px 10px 0;
+}
+
+.card:hover {
+  background-color: gainsboro;
 }
