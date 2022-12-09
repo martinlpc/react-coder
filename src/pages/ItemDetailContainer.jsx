@@ -1,5 +1,4 @@
 import React from "react";
-import database from "../database.json";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
@@ -8,19 +7,18 @@ import ItemDetail from "../components/ItemDetail";
 const ItemDetailContainer = () => {
     const { id } = useParams();
     const [prod, setProd] = useState();
-
-    function filterProdById() {
-        let filtProd = database?.find((item) => item.id === parseInt(id));
-        console.log("producto 👇");
-        console.log(filtProd);
-        setProd(filtProd);
-    }
+    const API_URL = "https://6391df6eac688bbe4c553a05.mockapi.io/api/v1/products/";
 
     useEffect(() => {
-        // Simulamos fetch a API
-
-        console.log("id: " + id);
-        filterProdById();
+        fetch(API_URL + id)
+            .then((resp) => resp.json())
+            .then((data) => {
+                setProd(data);
+                //console.log(data);
+            })
+            .catch((error) => {
+                console.error("Error en la consulta a la API: ", error);
+            });
     }, [id]);
 
     return (
