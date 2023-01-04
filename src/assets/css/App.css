@@ -7,6 +7,13 @@ html {
   scroll-behavior: smooth;
 }
 
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
 .App-logo {
   height: 40px;
 }
@@ -16,7 +23,7 @@ html {
 
 }
 
-.App-header {
+.App-navbar {
   background-color: #282c34;
   display: flex;
   flex-direction: row;
@@ -33,6 +40,10 @@ html {
   text-decoration: none;
   color: wheat;
 } */
+
+.ItemListContainer {
+  margin-top: 60px;
+}
 
 .Box-sections ul {
   list-style-type: none;
@@ -59,6 +70,20 @@ html {
   margin: 10px 10px 10px 0;
 }
 
+.Cart-widget span {
+  position: relative;
+  left: -5px;
+  top: -10px;
+  z-index: 2;
+  border: 1px solid crimson;
+  border-radius: 50%;
+
+}
+
 .card:hover {
   background-color: gainsboro;
+}
+
+.ItemDetailContainer {
+  margin-top: 60px;
 }

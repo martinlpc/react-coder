@@ -14,7 +14,6 @@ const ItemDetailContainer = () => {
             .then((resp) => resp.json())
             .then((data) => {
                 setProd(data);
-                //console.log(data);
             })
             .catch((error) => {
                 console.error("Error en la consulta a la API: ", error);
@@ -22,7 +21,7 @@ const ItemDetailContainer = () => {
     }, [id]);
 
     return (
-        <div className="container-fluid">
+        <div className="ItemDetailContainer container-fluid">
             <ItemDetail item={prod} />
         </div>
     );
