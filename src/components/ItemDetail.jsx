@@ -1,7 +1,17 @@
 import React from "react";
+import { useContext } from "react";
+import { CartContext, CartProvider } from "../context/CartContext";
+
 import ItemCount from "./ItemCount";
 
 const ItemDetail = ({ item }) => {
+    const cartContext = useContext(CartContext);
+    const { cart, addToCart } = cartContext;
+
+    const onAdd = (qty) => {
+        addToCart(item, qty);
+    };
+
     return (
         <div className="row">
             <div className="col-md-5 text-center mt-2">
@@ -17,7 +27,7 @@ const ItemDetail = ({ item }) => {
                 <div className="col-md-12">
                     <p>{item?.text}</p>
                 </div>
-                <ItemCount stock={item?.stock} initial={1} />
+                <ItemCount stock={item?.stock} initial={1} onAdd={onAdd} />
             </div>
         </div>
     );

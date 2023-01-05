@@ -55,7 +55,9 @@ const NavBar = () => {
                                 Juguetes
                             </Nav.Link>
                         </Nav>
-                        <CartWidget itemsCount={itemsCount} />
+                        <Link to="/cart">
+                            <CartWidget itemsCount={itemsCount} />
+                        </Link>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>

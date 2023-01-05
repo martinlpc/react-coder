@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ItemList from "./ItemList";
 
-import { useCart } from "../context/CartContext";
+//import { useCart } from "../context/CartContext";
 
 // TODO: fix-> en ItemDetail, al clickear una categoria de NavBar, se muestran todos los productos sin filtrar
 
 const ItemListContainer = () => {
     // Context del cart
     // eslint-disable-next-line
-    const data = useCart;
+    //const data = useCart;
 
     // Productos a mostrar
     const [prods, setProds] = useState(); // * prods filtrados
@@ -44,20 +44,20 @@ const ItemListContainer = () => {
     }, [categoryid]);
 
     return (
-        <div className="ItemListContainer">
+        <main className="ItemListContainer">
             <div className="Title-itemListContainer mt-2">
                 {categoryid === undefined ? (
-                    <h2>Estos son todos nuestros productos</h2>
+                    <h1>Estos son todos nuestros productos</h1>
                 ) : (
-                    <h2>
+                    <h1>
                         Viendo la categoría <b>{categoryid}</b>
-                    </h2>
+                    </h1>
                 )}
             </div>
             <div className="Body-itemListContainer container-fluid">
                 {prods?.length === 0 ? <p className="text-center">Por el momento no tenemos productos en esta categoria 😔</p> : <ItemList products={prods} />}
             </div>
-        </div>
+        </main>
     );
 };
 

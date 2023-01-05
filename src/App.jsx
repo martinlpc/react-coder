@@ -11,6 +11,7 @@ import { CartProvider } from "./context/CartContext";
 // Classes
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/App.css";
+import CartPage from "./pages/CartPage";
 
 function App() {
     return (
@@ -19,6 +20,7 @@ function App() {
                 <NavBar />
                 <Routes>
                     <Route exact path="/" element={<ItemListContainer />} />
+                    <Route exact path="/cart" element={<CartPage />} />
                     <Route path="category/:categoryid" element={<ItemListContainer />} />
                     <Route path="item/:id" element={<ItemDetailContainer />} />
                 </Routes>
