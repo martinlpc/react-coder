@@ -76,6 +76,8 @@ main {
   cursor: pointer;
 }
 
+
+
 .qty-display {
   /* position: relative;
   left: -5px;
@@ -87,13 +89,14 @@ main {
   display: inline-block;
   width: 18px;
   height: 18px;
-  background-color: white;
+  background-color: red;
   border-radius: 50%;
-  font-size: 12px;
+  font-size: 10px;
   position: absolute;
   text-align: center;
   line-height: 17px;
-  color: black;
+  color: white;
+  font-weight: bold;
 }
 
 .card:hover {

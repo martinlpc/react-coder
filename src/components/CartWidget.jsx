@@ -5,13 +5,12 @@ import { CartContext } from "../context/CartContext";
 import { useContext } from "react";
 
 const CartWidget = () => {
-    const cartContext = useContext(CartContext);
-    const { cart } = cartContext;
+    const { totalItems } = useContext(CartContext);
 
     return (
         <div className="Cart-widget">
             <FontAwesomeIcon icon={faCartShopping} color="white" size="2x" />
-            <span className="qty-display">{cart.totalItems}</span>
+            {totalItems !== 0 && <span className="qty-display">{totalItems}</span>}
         </div>
     );
 };

@@ -12,6 +12,7 @@ import { CartProvider } from "./context/CartContext";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/App.css";
 import CartPage from "./pages/CartPage";
+import Footer from "./components/Footer";
 
 function App() {
     return (
@@ -24,6 +25,7 @@ function App() {
                     <Route path="category/:categoryid" element={<ItemListContainer />} />
                     <Route path="item/:id" element={<ItemDetailContainer />} />
                 </Routes>
+                <Footer />
             </div>
         </CartProvider>
     );

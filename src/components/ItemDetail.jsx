@@ -1,12 +1,21 @@
-import React from "react";
+import { getFirestore } from "firebase/firestore";
+import React, { useEffect } from "react";
 import { useContext } from "react";
-import { CartContext, CartProvider } from "../context/CartContext";
-
-import ItemCount from "./ItemCount";
+import { CartContext } from "../context/CartContext";
+import { getAllProducts } from "../queries/Product";
+import ItemQuantitySelector from "./ItemQuantitySelector";
 
 const ItemDetail = ({ item }) => {
-    const cartContext = useContext(CartContext);
-    const { cart, addToCart } = cartContext;
+    /*
+    useEffect(() => {
+        const db = getFirestore();
+        console.log("getAllProducts👇🏻");
+        getAllProducts(db).then((item) => {
+            console.log(item);
+        });
+    }, []);
+    */
+    const { addToCart } = useContext(CartContext);
 
     const onAdd = (qty) => {
         addToCart(item, qty);
@@ -27,7 +36,7 @@ const ItemDetail = ({ item }) => {
                 <div className="col-md-12">
                     <p>{item?.text}</p>
                 </div>
-                <ItemCount stock={item?.stock} initial={1} onAdd={onAdd} />
+                <ItemQuantitySelector stock={item?.stock} initial={1} handleAdd={onAdd} />
             </div>
         </div>
     );

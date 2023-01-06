@@ -7,10 +7,6 @@ import ItemList from "./ItemList";
 // TODO: fix-> en ItemDetail, al clickear una categoria de NavBar, se muestran todos los productos sin filtrar
 
 const ItemListContainer = () => {
-    // Context del cart
-    // eslint-disable-next-line
-    //const data = useCart;
-
     // Productos a mostrar
     const [prods, setProds] = useState(); // * prods filtrados
     const [allProds, setAllProds] = useState(); // * todos los producos
@@ -21,8 +17,7 @@ const ItemListContainer = () => {
 
     // Selecciona los items con la categoryid especificada para renderizar
     function filterCategory() {
-        let filtProds = allProds?.filter((item) => item.categoryid === categoryid);
-        setProds(filtProds);
+        setProds(allProds?.filter((item) => item.categoryid === categoryid));
     }
     // Hook que se ejecuta una sola vez en el primer render
     useEffect(() => {

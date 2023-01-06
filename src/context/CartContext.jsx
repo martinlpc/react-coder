@@ -1,40 +1,46 @@
+import { useEffect } from "react";
 import { createContext, useState } from "react";
 
 export const CartContext = createContext(null);
 
 export const CartProvider = ({ children }) => {
+    // * --------------------------------------------
+    // * newCart es el resultado de modificar el cart
+    // * --------------------------------------------
     const [cart, setCart] = useState([]);
     const [totalItems, setTotalItems] = useState(0);
+    const [totalPrice, setTotalPrice] = useState(0);
+
+    useEffect(() => {
+        setTotalItems(cart.reduce((previous, current) => previous + current.qty, 0));
+        setTotalPrice(cart.reduce((previous, current) => previous + current.qty * current.price, 0));
+    }, [cart]);
 
     const addToCart = (item, qty) => {
-        if (cart.some((elem) => elem.id === item.id)) {
+        if (isInCart(item.id)) {
             let index = cart.findIndex((elem) => elem.id === item.id);
             let product = cart[index];
             product.qty += qty;
             const newCart = [...cart];
-            // Elimina el elemento con qty vieja e inserta con qty actualizada
+            // * Elimina el elemento con qty vieja e inserta con qty actualizada
             newCart.splice(index, 1, product);
             setCart([...newCart]);
         } else {
-            let product = { ...item, qty };
-            setCart([...cart, product]);
+            setCart([...cart, { ...item, qty }]);
         }
-        getTotalQty();
-        console.log(cart);
-        console.log(totalItems);
     };
 
     const removeItemById = (id) => {
+        // Elimina el producto y el total de sus unidades
         const newCart = [...cart];
         let index = newCart.findIndex((elem) => elem.id === id);
         newCart.splice(index, 1);
         setCart([...newCart]);
-        getTotalQty();
     };
 
     const clearCart = () => {
         setCart([]);
-        getTotalQty();
+
         // agregar gestion de localstorage
     };
 
@@ -42,15 +48,10 @@ export const CartProvider = ({ children }) => {
         return cart.some((item) => item.id === productID);
     };
 
-    const getTotalPrice = () => {};
-
-    const getTotalQty = () => {
-        let itemCounter;
-        cart.forEach((elem) => {
-            itemCounter += elem.qty;
-        });
-        setTotalItems(itemCounter);
-    };
+    function printCart() {
+        console.log("cart:");
+        console.log(cart);
+    }
 
     return (
         <CartContext.Provider
@@ -60,9 +61,10 @@ export const CartProvider = ({ children }) => {
                 addToCart,
                 removeItemById,
                 clearCart,
-                isInCart,
-                getTotalPrice,
+                totalPrice,
+                setTotalPrice,
                 totalItems,
+                printCart,
             }}
         >
             {children}

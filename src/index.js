@@ -6,7 +6,6 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 
 import { initializeApp } from "firebase/app";
-
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -16,11 +15,10 @@ const firebaseConfig = {
     storageBucket: "natufriend-8ca5e.appspot.com",
     messagingSenderId: "469378210397",
     appId: "1:469378210397:web:943bbedefa41c4d889cbb4",
-    measurementId: "G-CBMCXGX1GG",
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

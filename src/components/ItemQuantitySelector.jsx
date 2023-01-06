@@ -1,32 +1,37 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus, faCartArrowDown } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
 
-const ItemCount = ({ stock, initial, onAdd }) => {
+const ItemQuantitySelector = ({ stock, initial, handleAdd }) => {
+    const { printCart } = useContext(CartContext);
+
     const [qty, setQty] = useState(initial);
 
-    const addProduct = (incr) => {
+    const addQty = (incr) => {
         setQty(qty + incr);
     };
 
     return (
         <>
             <div className="mt-2 col-12">
-                <span>En stock: {stock} un.</span>
+                <span>En stock: {stock} unidades</span>
             </div>
             <div className="mt-2 col-12">
-                <button className="btn btn-outline-primary btn-sm" onClick={() => addProduct(+1)} disabled={qty === stock ? true : null}>
+                <button className="btn btn-outline-primary btn-sm" onClick={() => addQty(+1)} disabled={qty === stock ? true : null}>
                     <FontAwesomeIcon icon={faPlus} />
                 </button>
                 <span> {qty} </span>
-                <button className="btn btn-outline-primary btn-sm" onClick={() => addProduct(-1)} disabled={qty === initial ? true : null}>
+                <button className="btn btn-outline-primary btn-sm" onClick={() => addQty(-1)} disabled={qty === initial ? true : null}>
                     <FontAwesomeIcon icon={faMinus} />
                 </button>
             </div>
             <div className="mt-2 col-12">
                 <button
                     onClick={() => {
-                        onAdd(qty);
+                        handleAdd(qty);
+                        printCart();
                     }}
                     className="btn btn-outline-primary btn-sm"
                 >
@@ -38,4 +43,4 @@ const ItemCount = ({ stock, initial, onAdd }) => {
     );
 };
 
-export default ItemCount;
+export default ItemQuantitySelector;
