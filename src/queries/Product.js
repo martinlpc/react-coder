@@ -25,11 +25,15 @@ export const getProductById = async (db, id) => {
 
     try {
         const querySnapshot = await getDoc(documentRef);
-        if (querySnapshot.exists) {
+        // ! FS devuelve true aunque el documento no exista
+        // ! _document === null => no existe
+        if (querySnapshot.exists && querySnapshot._document !== null) {
             return {
                 id: querySnapshot.id,
                 ...querySnapshot.data(),
             };
+        } else {
+            return false;
         }
     } catch (error) {
         return error;

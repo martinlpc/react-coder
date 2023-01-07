@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Container } from "react-bootstrap";
 import { CartContext } from "../context/CartContext";
 import CartItem from "./CartItem";
 
@@ -7,7 +8,7 @@ const CartItemList = () => {
 
     return (
         <>
-            <section className="cart-item-list-container container align-center">
+            <Container as="section" className="cart-item-list-container container align-center">
                 {cart ? (
                     cart.map((prod) => {
                         return <CartItem key={prod.id} item={prod} removeItemById={removeItemById} />;
@@ -15,24 +16,18 @@ const CartItemList = () => {
                 ) : (
                     <p>Cargando productos</p>
                 )}
-            </section>
-            <section className="cart-item-list_total container d-flex justify-content-center">
+            </Container>
+            <Container as="section" className="cart-item-list_total d-flex justify-content-center">
                 {cart.length ? (
                     <>
-                        <div>
-                            <p>{totalPrice}</p>
-                        </div>
-                        <div className="cart-item-list_buttons container d-flex justify-content-around">
-                            <button className="btn btn-danger" onClick={clearCart}>
-                                Vaciar carrito
-                            </button>
-                            <button className="btn btn-primary">Proceder con la compra</button>
+                        <div className="mt-3">
+                            <h3>Total en esta compra: $ {totalPrice}</h3>
                         </div>
                     </>
                 ) : (
                     <p>Tu carrito está vacío 🍃</p>
                 )}
-            </section>
+            </Container>
         </>
     );
 };

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { getFirestore } from "firebase/firestore";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { getAllProducts } from "../queries/Product";
 import ItemList from "./ItemList";
-
-//import { useCart } from "../context/CartContext";
 
 // TODO: fix-> en ItemDetail, al clickear una categoria de NavBar, se muestran todos los productos sin filtrar
 
@@ -13,22 +13,20 @@ const ItemListContainer = () => {
     // Obtención de URL param de la categoría solicitada
     const { categoryid } = useParams();
 
-    const API_URL = "https://6391df6eac688bbe4c553a05.mockapi.io/api/v1/products/";
-
     // Selecciona los items con la categoryid especificada para renderizar
     function filterCategory() {
         setProds(allProds?.filter((item) => item.categoryid === categoryid));
     }
     // Hook que se ejecuta una sola vez en el primer render
     useEffect(() => {
-        fetch(API_URL)
-            .then((resp) => resp.json())
-            .then((data) => {
-                setProds(data);
-                setAllProds(data);
+        const db = getFirestore();
+        getAllProducts(db)
+            .then((items) => {
+                setProds(items);
+                setAllProds(items);
             })
             .catch((error) => {
-                console.error("Error en la consulta a la API: ", error);
+                console.error("Error en consulta a DB: ", error);
             });
     }, []);
 
@@ -49,7 +47,7 @@ const ItemListContainer = () => {
                     </h1>
                 )}
             </div>
-            <div className="Body-itemListContainer container-fluid">
+            <div className="Body-itemListContainer container-fluid mx-1">
                 {prods?.length === 0 ? <p className="text-center">Por el momento no tenemos productos en esta categoria 😔</p> : <ItemList products={prods} />}
             </div>
         </main>

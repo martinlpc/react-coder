@@ -1,12 +1,16 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { CartContext } from "../context/CartContext";
 
-const CartItem = ({ item, removeItemById }) => {
+export const CartWidgetItem = ({ item }) => {
+    const { removeItemById } = useContext(CartContext);
+
     return (
-        <article className="cart-item" key={item.id}>
+        <span className="cart-item" key={item.id}>
             <Link to={"/item/" + item.id}>
-                <img src={item.img} className="checkout-item-img" alt={item.title} />
+                <img src={item.img} className="cart-item-img" alt={item.title} />
             </Link>
             <div className="cart-item-detail">
                 <span>
@@ -25,8 +29,6 @@ const CartItem = ({ item, removeItemById }) => {
                     }}
                 />
             </div>
-        </article>
+        </span>
     );
 };
-
-export default CartItem;

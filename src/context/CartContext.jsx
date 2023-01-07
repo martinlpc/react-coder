@@ -41,17 +41,12 @@ export const CartProvider = ({ children }) => {
     const clearCart = () => {
         setCart([]);
 
-        // agregar gestion de localstorage
+        // ? agregar gestion de localstorage
     };
 
     const isInCart = (productID) => {
         return cart.some((item) => item.id === productID);
     };
-
-    function printCart() {
-        console.log("cart:");
-        console.log(cart);
-    }
 
     return (
         <CartContext.Provider
@@ -64,7 +59,6 @@ export const CartProvider = ({ children }) => {
                 totalPrice,
                 setTotalPrice,
                 totalItems,
-                printCart,
             }}
         >
             {children}

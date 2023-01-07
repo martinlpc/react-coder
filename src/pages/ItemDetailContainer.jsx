@@ -1,28 +1,36 @@
-import React from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-
+import { getProductById } from "../queries/Product";
 import ItemDetail from "../components/ItemDetail";
+import { getFirestore } from "firebase/firestore";
 
 const ItemDetailContainer = () => {
     const { id } = useParams();
     const [prod, setProd] = useState();
-    const API_URL = "https://6391df6eac688bbe4c553a05.mockapi.io/api/v1/products/";
 
     useEffect(() => {
-        fetch(API_URL + id)
-            .then((resp) => resp.json())
-            .then((data) => {
-                setProd(data);
+        const db = getFirestore();
+        getProductById(db, id)
+            .then((item) => {
+                setProd(item);
             })
             .catch((error) => {
-                console.error("Error en la consulta a la API: ", error);
+                console.error("Error en consulta a DB: ", error);
             });
     }, [id]);
 
     return (
         <main className="ItemDetailContainer container-fluid">
-            <ItemDetail item={prod} />
+            {!prod ? (
+                <div className="row">
+                    <h1 className="col-12">No existe el producto 🔍🤨</h1>
+                    <Link className="col-12" to={"/"}>
+                        Volver al home
+                    </Link>
+                </div>
+            ) : (
+                <ItemDetail item={prod} />
+            )}
         </main>
     );
 };

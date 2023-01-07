@@ -1,20 +1,11 @@
 import { getFirestore } from "firebase/firestore";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
-import { getAllProducts } from "../queries/Product";
+import { getProductById } from "../queries/Product";
 import ItemQuantitySelector from "./ItemQuantitySelector";
 
 const ItemDetail = ({ item }) => {
-    /*
-    useEffect(() => {
-        const db = getFirestore();
-        console.log("getAllProducts👇🏻");
-        getAllProducts(db).then((item) => {
-            console.log(item);
-        });
-    }, []);
-    */
     const { addToCart } = useContext(CartContext);
 
     const onAdd = (qty) => {
@@ -24,7 +15,7 @@ const ItemDetail = ({ item }) => {
     return (
         <div className="row">
             <div className="col-md-5 text-center mt-2">
-                <img className="w-100" src={item?.img_src} alt="..." />
+                <img className="w-100" src={item?.img} alt="..." />
             </div>
             <div className="container mt-2 col-md-7">
                 <div className="col-md-12">
