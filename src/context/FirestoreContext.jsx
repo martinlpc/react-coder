@@ -1,7 +1,6 @@
 import { getFirestore } from "firebase/firestore";
-import { useEffect } from "react";
 import { createContext, useState } from "react";
-import { getAllProducts, getProductById } from "../queries/Product";
+import { getAllProducts } from "../queries/Product";
 import "../queries/Categories";
 
 export const FirestoreContext = createContext(null);

@@ -1,12 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus, faCartArrowDown } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-import { useContext } from "react";
-import { CartContext } from "../context/CartContext";
 
 const ItemQuantitySelector = ({ stock, initial, handleAdd }) => {
-    const { printCart } = useContext(CartContext);
-
     const [qty, setQty] = useState(initial);
 
     const addQty = (incr) => {
@@ -31,7 +27,6 @@ const ItemQuantitySelector = ({ stock, initial, handleAdd }) => {
                 <button
                     onClick={() => {
                         handleAdd(qty);
-                        printCart();
                     }}
                     className="btn btn-outline-primary btn-sm"
                 >

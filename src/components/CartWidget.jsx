@@ -6,14 +6,6 @@ import { Badge, Dropdown } from "react-bootstrap";
 import { CartWidgetItem } from "./CartWidgetItem";
 import { CartWidgetActions } from "./CartWidgetActions";
 
-/*<div className="Cart-widget">
-    <FontAwesomeIcon icon={faCartShopping} color="white" size="2x" />
-    {totalItems !== 0 && <span className="qty-display">{totalItems}</span>}
-    </div>
-
-    <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-*/
-
 const CartWidget = () => {
     const { totalItems, cart } = useContext(CartContext);
 
@@ -30,7 +22,8 @@ const CartWidget = () => {
                 ) : (
                     <>
                         {cart.map((item) => (
-                            <CartWidgetItem item={item} />
+                            <CartWidgetItem item={item} key={item.id} />
+                            // Paso key para evitar el warning de DevTools
                         ))}
 
                         <CartWidgetActions />

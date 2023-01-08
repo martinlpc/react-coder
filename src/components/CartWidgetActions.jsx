@@ -13,7 +13,7 @@ export const CartWidgetActions = () => {
             <span className="cart-total">Importe total: $ {totalPrice}</span>
             <Dropdown.Divider />
             <span className="cart-buttons">
-                <Link to={"checkout/"}>
+                <Link to={"cart/"}>
                     <Button variant="success">Ir al checkout</Button>
                 </Link>
                 <Button onClick={clearCart} variant="danger">

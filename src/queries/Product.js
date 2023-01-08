@@ -1,4 +1,4 @@
-import { collection, doc, getDoc, getDocs, setDoc, where, query, deleteDoc } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 
 const PRODUCT_COLLECTION = "products";
 
