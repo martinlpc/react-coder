@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Col, Container } from "react-bootstrap";
-import { CartContext } from "../context/CartContext";
+import { CartContext } from "../../context/CartContext";
 import CartItem from "./CartItem";
 
 const CartItemList = () => {
@@ -26,7 +26,7 @@ const CartItemList = () => {
                         </div>
                     </>
                 ) : (
-                    <p>Tu carrito está vacío 🍃</p>
+                    <p>Tu carrito está vacío 🐶🐱</p>
                 )}
             </Container>
         </Col>

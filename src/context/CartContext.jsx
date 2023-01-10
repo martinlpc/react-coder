@@ -8,6 +8,7 @@ export const CartProvider = ({ children }) => {
     // * newCart es el resultado de modificar el cart
     // * --------------------------------------------
     const [cart, setCart] = useState([]);
+    const [orderId, setOrderId] = useState(null);
     const [totalItems, setTotalItems] = useState(0);
     const [totalPrice, setTotalPrice] = useState(0);
 
@@ -40,8 +41,6 @@ export const CartProvider = ({ children }) => {
 
     const clearCart = () => {
         setCart([]);
-
-        // ? agregar gestion de localstorage
     };
 
     const isInCart = (productID) => {
@@ -59,6 +58,8 @@ export const CartProvider = ({ children }) => {
                 totalPrice,
                 setTotalPrice,
                 totalItems,
+                orderId,
+                setOrderId,
             }}
         >
             {children}

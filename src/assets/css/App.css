@@ -15,34 +15,13 @@ header {
 }
 
 main {
-  margin-top: 110px;
+  /*margin-top: 110px;*/
+  margin: 110px 0 50px
 }
 
 .App-logo {
   height: 80px;
 }
-
-/* .App-navbar {
-  background-color: #282c34;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  color: white;
-} */
-
-/* .Navbar-dropdown>* {
-  text-decoration: none;
-} */
-
-/* .Logo a {
-  text-decoration: none;
-  color: wheat;
-} */
-
-/* .ItemListContainer {
-  margin-top: 60px;
-} */
 
 .Box-sections ul {
   list-style-type: none;
@@ -116,13 +95,7 @@ main {
 }
 
 .qty-display {
-  /* position: relative;
-  left: -5px;
-  top: -10px;
-  z-index: 2;
-  border: 1px solid crimson;
-  border-radius: 50%;
-  color: white; */
+
   display: inline-block;
   width: 18px;
   height: 18px;
@@ -140,6 +113,16 @@ main {
   background-color: gainsboro;
 }
 
-/* .ItemDetailContainer {
-  margin-top: 60px;
-} */
+.card-img {
+  object-fit: contain;
+}
+
+.card-obj {
+  max-height: 270px;
+}
+
+footer {
+  background-color: #212529;
+  color: white;
+  bottom: 0;
+}

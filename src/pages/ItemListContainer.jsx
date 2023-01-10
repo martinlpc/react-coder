@@ -2,7 +2,7 @@ import { getFirestore } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getAllProducts } from "../queries/Product";
-import ItemList from "./ItemList";
+import ItemList from "../components/Item/ItemList";
 
 // TODO: fix-> en ItemDetail, al clickear una categoria de NavBar, se muestran todos los productos sin filtrar
 

@@ -2,7 +2,7 @@ import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { CartContext } from "../context/CartContext";
+import { CartContext } from "../../context/CartContext";
 
 export const CartWidgetItem = ({ item }) => {
     const { removeItemById } = useContext(CartContext);

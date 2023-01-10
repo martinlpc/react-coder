@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Button, Dropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { CartContext } from "../context/CartContext";
+import { CartContext } from "../../context/CartContext";
 
 export const CartWidgetActions = () => {
     const { totalItems, totalPrice, clearCart } = useContext(CartContext);

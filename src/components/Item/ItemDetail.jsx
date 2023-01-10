@@ -1,8 +1,5 @@
-import { getFirestore } from "firebase/firestore";
-import { useEffect } from "react";
 import { useContext } from "react";
-import { CartContext } from "../context/CartContext";
-import { getProductById } from "../queries/Product";
+import { CartContext } from "../../context/CartContext";
 import ItemQuantitySelector from "./ItemQuantitySelector";
 
 const ItemDetail = ({ item }) => {
