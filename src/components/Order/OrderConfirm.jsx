@@ -12,7 +12,7 @@ export const OrderConfirm = ({ orderId }) => {
                 Tu orden de compra tiene el id: <b>{orderId}</b>
             </h2>
             <Link to={"/"}>
-                <Button onClick={clearCart} variant="outline-danger">
+                <Button onClick={clearCart} variant="outline-primary">
                     Volver al comienzo
                 </Button>
             </Link>

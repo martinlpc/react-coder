@@ -7,7 +7,7 @@ import { setOrder } from "../../queries/Orders";
 import OrderInput from "./OrderInput";
 
 export const OrderForm = () => {
-    // Estado que maneja habilittación de SubmitBtn
+    // Estado que maneja habilitación de SubmitBtn
     const [validated, setValidated] = useState(false);
 
     // Estados para manejar los componentes OrderInput
@@ -65,7 +65,6 @@ export const OrderForm = () => {
         const db = getFirestore();
         const orderIdFromFB = await setOrder(db, order);
         setOrderId(orderIdFromFB);
-        console.log(orderIdFromFB);
     };
 
     return (
@@ -80,7 +79,7 @@ export const OrderForm = () => {
                     type="text"
                     label="Número de celular"
                     placeholder="Cod. de área sin 0 y sin 15, ej: 1123456789"
-                    maxLenght={10}
+                    maxLength={10}
                     onKeyDown={handleOnKeyDownTel}
                     onKeyUp={handleOnKeyUpTel}
                 />

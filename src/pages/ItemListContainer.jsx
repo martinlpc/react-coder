@@ -3,37 +3,37 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getAllProducts } from "../queries/Product";
 import ItemList from "../components/Item/ItemList";
+import ItemPlaceholder from "../components/Item/ItemPlaceholder";
+import { Row } from "react-bootstrap";
 
 // TODO: fix-> en ItemDetail, al clickear una categoria de NavBar, se muestran todos los productos sin filtrar
 
 const ItemListContainer = () => {
+    // State para placeholders/spinners
+    const [isLoading, setLoading] = useState(true);
     // Productos a mostrar
     const [prods, setProds] = useState(); // * prods filtrados
-    const [allProds, setAllProds] = useState(); // * todos los producos
     // Obtención de URL param de la categoría solicitada
     const { categoryid } = useParams();
 
-    // Selecciona los items con la categoryid especificada para renderizar
-    function filterCategory() {
-        setProds(allProds?.filter((item) => item.categoryid === categoryid));
-    }
-    // Hook que se ejecuta una sola vez en el primer render
     useEffect(() => {
         const db = getFirestore();
         getAllProducts(db)
             .then((items) => {
-                setProds(items);
-                setAllProds(items);
+                setLoading(false);
+                // Utilizo el condicional
+                if (categoryid) {
+                    // Si vino la categoría, filtramos
+                    const filteredArray = items.filter((item) => item.categoryid === categoryid);
+                    setProds(filteredArray);
+                } else {
+                    // Caso contrario, seteo el estado con todos los productos
+                    setProds(items);
+                }
             })
             .catch((error) => {
                 console.error("Error en consulta a DB: ", error);
             });
-    }, []);
-
-    // Hook que se ejecuta cuando cambia el categoryid
-    useEffect(() => {
-        // Por el momento no se listan los productos por estar en promo
-        categoryid !== undefined ? filterCategory() : setProds(allProds);
     }, [categoryid]);
 
     return (
@@ -48,7 +48,19 @@ const ItemListContainer = () => {
                 )}
             </div>
             <div className="Body-itemListContainer container-fluid mx-1">
-                {prods?.length === 0 ? <p className="text-center">Por el momento no tenemos productos en esta categoria 😔</p> : <ItemList products={prods} />}
+                {isLoading && (
+                    <Row xs={1} sm={2} lg={3} xl={4} xxl={5}>
+                        <ItemPlaceholder />
+                        <ItemPlaceholder />
+                        <ItemPlaceholder />
+                    </Row>
+                )}
+                {!isLoading &&
+                    (prods?.length === 0 ? (
+                        <p className="text-center">Por el momento no tenemos productos en esta categoria 😔</p>
+                    ) : (
+                        <ItemList products={prods} />
+                    ))}
             </div>
         </main>
     );
